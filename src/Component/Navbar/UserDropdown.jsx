@@ -1,4 +1,4 @@
-import { FaUserAlt } from "react-icons/fa";
+
 import useAuth from "../../Hooks/useAuth";
 import { Link } from "react-router-dom";
 import useUserData from "../../Hooks/useUserData";
