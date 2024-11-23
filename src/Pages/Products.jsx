@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import SearchBar from "../Component/Product/SearchBar";
 import SortByPrice from "../Component/Product/SortByPrice";
 import FilterBar from "../Component/Product/FilterBar";
-import Loading from "./loading";
+import Loading from "./Loading";
 import { IoArrowBackCircle, IoArrowForwardCircle } from "react-icons/io5";
 import ProductCard from "../Component/ProductCard";
 
