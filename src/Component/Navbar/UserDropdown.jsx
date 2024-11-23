@@ -12,7 +12,7 @@ const UserDropdown = () => {
           <div tabIndex={0} role="button" className="btn m-1 bg-green-200">
             <div className="avatar">
               <div className="ring-primary ring-offset-base-100 w-10 rounded-full ring ring-offset-2">
-                <img src={`${user?.photoURL || user.png}`} />
+                <img src={`${user?.photoURL || /images/user.png}`} />
               </div>
             </div>
             <div className="badge ">
