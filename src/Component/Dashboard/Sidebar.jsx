@@ -48,6 +48,12 @@ const Sidebar = () => {
               <NavLink to={route.routes} activeClassName="font-bold">{route.title}</NavLink>
             </li>
           ))}
+        {role === "Admin" &&
+          sellerRoutes.map((route) => (
+            <li key={route.id}>
+              <NavLink to={route.routes} activeClassName="font-bold">{route.title}</NavLink>
+            </li>
+          ))}
         <li>
           <NavLink to="/" activeClassName="font-bold">Home</NavLink>
         </li>

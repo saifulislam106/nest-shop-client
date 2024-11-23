@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="footer footer-center bg-neutral text-base-content rounded p-10">
+    <footer className="footer footer-center bg-neutral text-base-content rounded p-10 text-white">
       <aside>
         <h2 className="font-bold text-2xl">
           Nest<span className="text-green-500">S</span>hop
@@ -52,7 +52,7 @@ const Footer = () => {
       </div>
     </nav>
     <aside>
-      <p>Copyright © {new Date().getFullYear()} - All right reserved by ACME Industries Ltd</p>
+      <p>Copyright © {new Date().getFullYear()} - All right reserved by NestShop Ltd</p>
     </aside>
   </footer>
   );

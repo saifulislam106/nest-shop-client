@@ -55,7 +55,7 @@ const Products = () => {
       setBrand("");
       setCategory("");
       setPage(1);
-      // window.location.reload()
+      
     };
   
     const handlePageChange = (newPage) => {

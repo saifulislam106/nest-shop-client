@@ -7,7 +7,12 @@ import GoogleLoginRegistation from "../AuthProvider/GoogleLoginRegistation";
 
 const Register = () => {
   const { CreateUser } = useAuth();
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
   const navigate = useNavigate();
 
   const onSubmit = (data) => {
@@ -15,7 +20,7 @@ const Register = () => {
     const role = data.role;
     const status = role === "Buyer" ? "approved" : "pending";
     const wishlist = [];
-    console.log(email,role, status,wishlist);
+    console.log(email, role, status, wishlist);
     const userData = { email, role, status, wishlist };
 
     // Uncomment if you intend to register the user and send data to your server
@@ -75,7 +80,11 @@ const Register = () => {
                   type="password"
                   placeholder="password"
                   className="input input-bordered"
-                  {...register("password", { required: true, minLength: 6 })}
+                  {...register("password", {
+                    required: true,
+                    minLength: 8,
+                    pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/i,
+                  })}
                 />
                 {errors.password?.type === "required" && (
                   <p className="text-red-500 font-light text-sm">
@@ -84,7 +93,13 @@ const Register = () => {
                 )}
                 {errors.password?.type === "minLength" && (
                   <p className="text-red-500 font-light text-sm">
-                    Password must have at least 6 characters
+                    Password must have at least 8 characters
+                  </p>
+                )}
+                {errors.password?.type === "pattern" && (
+                  <p className="text-red-500 font-light text-sm">
+                    Password must have at least one uppercase , one lowercase
+                    ,one number and one special character
                   </p>
                 )}
               </div>
@@ -123,7 +138,7 @@ const Register = () => {
                 >
                   <option>Buyer</option>
                   <option>Seller</option>
-                  {/* <option>Admin</option> */}
+                  <option>Admin</option>
                 </select>
                 {errors.role && (
                   <p className="text-red-500 font-light text-sm">
