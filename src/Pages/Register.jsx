@@ -25,18 +25,20 @@ const Register = () => {
 
     // Uncomment if you intend to register the user and send data to your server
     CreateUser(data.email, data.password).then(() => {
-      axios.post("http://localhost:4000/users", userData).then((res) => {
-        if (res.data.insertedId) {
-          Swal.fire({
-            position: "center",
-            icon: "success",
-            title: "Registration successful",
-            showConfirmButton: false,
-            timer: 1500,
-          });
-          navigate("/");
-        }
-      });
+      axios
+        .post("https://nest-shop-server-six.vercel.app/users", userData)
+        .then((res) => {
+          if (res.data.insertedId) {
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "Registration successful",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+            navigate("/");
+          }
+        });
     });
   };
 
@@ -83,7 +85,8 @@ const Register = () => {
                   {...register("password", {
                     required: true,
                     minLength: 8,
-                    pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/i,
+                    pattern:
+                      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/i,
                   })}
                 />
                 {errors.password?.type === "required" && (

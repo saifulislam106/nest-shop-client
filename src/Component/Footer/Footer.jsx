@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="footer footer-center bg-neutral text-base-content rounded p-10 text-white">
+    <footer className="footer footer-center bg-neutral rounded p-10 text-white">
       <aside>
         <h2 className="font-bold text-2xl">
           Nest<span className="text-green-500">S</span>hop

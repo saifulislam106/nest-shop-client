@@ -8,62 +8,60 @@ import { IoArrowBackCircle, IoArrowForwardCircle } from "react-icons/io5";
 import ProductCard from "../Component/ProductCard";
 
 const Products = () => {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [search, setSearch] = useState("");
+  const [sort, setSort] = useState("");
+  const [brand, setBrand] = useState("");
+  const [category, setCategory] = useState("");
+  const [uniqueBrand, setUniqueBrand] = useState([]);
+  const [uniqueCategory, setUniqueCategory] = useState([]);
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
 
-    const [products, setProducts] = useState([]);
-    const [loading, setLoading] = useState(false);
-    const [search, setSearch] = useState("");
-    const [sort, setSort] = useState("");
-    const [brand, setBrand] = useState("");
-    const [category, setCategory] = useState("");
-    const [uniqueBrand, setUniqueBrand] = useState([]);
-    const [uniqueCategory, setUniqueCategory] = useState([]);
-    const [page, setPage] = useState(1);
-    const [totalPages, setTotalPages] = useState(1);
-  
-    // console.log(search , sort);
-  
-    useEffect(() => {
-      setLoading(true);
-      const fetch = async () => {
-       try{
+  // console.log(search , sort);
+
+  useEffect(() => {
+    setLoading(true);
+    const fetch = async () => {
+      try {
         const res = await axios.get(
-          `http://localhost:4000/all-products?title=${search}&page=${page}&limit=${9}&sort=${sort}&brand=${brand}&category=${category}`
+          `https://nest-shop-server-six.vercel.app/all-products?title=${search}&page=${page}&limit=${9}&sort=${sort}&brand=${brand}&category=${category}`
         );
         setProducts(res.data.products);
         // console.log(res.data.products);
         setUniqueBrand(res.data.brands);
         setUniqueCategory(res.data.categories);
         setTotalPages(Math.ceil(res.data.totalProducts / 9));
-       } catch (err){
-          console.error(err)
-       }
-        // console.log(totalProducts)
-        setLoading(false);
-      };
-      fetch();
-    }, [search, sort, brand, category, page]);
-  
-    const handleSearch = (e) => {
-      e.preventDefault();
-      setSearch(e.target.search.value);
-      e.target.search.value = "";
-    };
-  
-    const handleReset = () => {
-      setSearch("");
-      setSort("asc");
-      setBrand("");
-      setCategory("");
-      setPage(1);
-      
-    };
-  
-    const handlePageChange = (newPage) => {
-      if (newPage > 0 && newPage <= totalPages) {
-        setPage(newPage);
-        window.scrollTo({ top: 0, behavior: "smooth" });
+      } catch (err) {
+        console.error(err);
       }
+      // console.log(totalProducts)
+      setLoading(false);
     };
+    fetch();
+  }, [search, sort, brand, category, page]);
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    setSearch(e.target.search.value);
+    e.target.search.value = "";
+  };
+
+  const handleReset = () => {
+    setSearch("");
+    setSort("asc");
+    setBrand("");
+    setCategory("");
+    setPage(1);
+  };
+
+  const handlePageChange = (newPage) => {
+    if (newPage > 0 && newPage <= totalPages) {
+      setPage(newPage);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
 
   return (
     <div className="container mx-auto">

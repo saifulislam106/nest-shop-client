@@ -4,47 +4,53 @@ import axios from "axios";
 import Swal from "sweetalert2";
 
 const AddProducts = () => {
+  const { user } = useAuth();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-    const {user} =useAuth()
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useForm();
+  const onSubmit = (data) => {
+    const title = data.title;
+    const price = parseFloat(data.price);
+    const brand = data.brand;
+    const stock = data.stock;
+    const imageUrl = data.imageUrl;
+    const category = data.category;
+    const description = data.description;
+    const sellerEmial = user.email;
+    const product = {
+      title,
+      price,
+      brand,
+      stock,
+      category,
+      description,
+      sellerEmial,
+      imageUrl,
+    };
+    const token = localStorage.getItem("access-token");
 
-    const onSubmit = (data) => {
-        const title = data.title;
-        const price = parseFloat(data.price);
-        const brand = data.brand;
-        const stock = data.stock;
-        const imageUrl = data.imageUrl
-        const category = data.category;
-        const description = data.description;
-        const sellerEmial = user.email;
-        const product ={
-            title ,price , brand, stock, category, description, sellerEmial, imageUrl
-        };
-        const token = localStorage.getItem("access-token");
-
-        axios.post("http://localhost:4000/add-products" ,product ,{
-            headers: {
-                authorization : `Baerer ${token}`
-            },
-        })
-        .then((res)=>{
-            if(res.data.insertedId){
-                Swal.fire({
-                    position: "center",
-                    icon: "success",
-                    title: "Product added sucessfully",
-                    showConfirmButton: false,
-                    timer: 1500
-                  });
-            }
-            console.log(res);
-        })
-    }
-
+    axios
+      .post("https://nest-shop-server-six.vercel.app/add-products", product, {
+        headers: {
+          authorization: `Baerer ${token}`,
+        },
+      })
+      .then((res) => {
+        if (res.data.insertedId) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Product added sucessfully",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+        console.log(res);
+      });
+  };
 
   return (
     <div>

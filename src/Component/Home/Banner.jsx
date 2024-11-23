@@ -12,8 +12,7 @@ const Banner = () => {
                 <div className="max-w-md">
                     <h1 className="mb-5 text-5xl font-bold">Welcome Our NestShop</h1>
                     <p className="mb-5">
-                        Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
-                        quasi. In deleniti eaque aut repudiandae et a id nisi.
+                    Your one-stop online destination for gadgets. seamless shopping with fast delivery, secure checkout, and exceptional customer support.
                     </p>
                     <button className="btn bg-green-500">Get Started</button>
                 </div>

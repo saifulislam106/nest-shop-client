@@ -1,68 +1,32 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
+import SingleProduct from "./SingleProduct";
+
 const ProductCards = () => {
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const res = await axios.get(
+          "https://nest-shop-server-six.vercel.app/all-products"
+        );
+        setItems(res.data.products);
+        console.log(res.data.products);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+    fetchProducts();
+  }, []);
+
   return (
     <div>
       <h3 className="text-3xl font-bold text-center my-10">Our Products</h3>
-      <div>
-        <div className="card bg-base-100 w-96 shadow-xl">
-          <figure>
-            <img
-              src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-              alt="Shoes"
-            />
-          </figure>
-          <div className="card-body">
-            <h2 className="card-title">Shoes!</h2>
-            <p>If a dog chews shoes whose shoes does he choose?</p>
-            <div className="card-actions justify-end">
-              <button className="btn btn-primary">Buy Now</button>
-            </div>
-          </div>
-        </div>
-        <div className="card bg-base-100 w-96 shadow-xl">
-          <figure>
-            <img
-              src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-              alt="Shoes"
-            />
-          </figure>
-          <div className="card-body">
-            <h2 className="card-title">Shoes!</h2>
-            <p>If a dog chews shoes whose shoes does he choose?</p>
-            <div className="card-actions justify-end">
-              <button className="btn btn-primary">Buy Now</button>
-            </div>
-          </div>
-        </div>
-        <div className="card bg-base-100 w-96 shadow-xl">
-          <figure>
-            <img
-              src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-              alt="Shoes"
-            />
-          </figure>
-          <div className="card-body">
-            <h2 className="card-title">Shoes!</h2>
-            <p>If a dog chews shoes whose shoes does he choose?</p>
-            <div className="card-actions justify-end">
-              <button className="btn btn-primary">Buy Now</button>
-            </div>
-          </div>
-        </div>
-        <div className="card bg-base-100 w-96 shadow-xl">
-          <figure>
-            <img
-              src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-              alt="Shoes"
-            />
-          </figure>
-          <div className="card-body">
-            <h2 className="card-title">Shoes!</h2>
-            <p>If a dog chews shoes whose shoes does he choose?</p>
-            <div className="card-actions justify-end">
-              <button className="btn btn-primary">Buy Now</button>
-            </div>
-          </div>
-        </div>
+      <div className="grid lg:grid-cols-3 gap-5">
+        {items?.map((product) => (
+          <SingleProduct key={product._id} product={product}></SingleProduct>
+        ))}
       </div>
     </div>
   );

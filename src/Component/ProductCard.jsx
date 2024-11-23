@@ -2,8 +2,8 @@ import axios from "axios";
 import useUserData from "../Hooks/useUserData";
 import Swal from "sweetalert2";
 
-const ProductCard = ({ product, isInWishlist ,setRemoveWishlist }) => {
-    const { title, brand, price, stock, category, description, imageUrl } =
+const ProductCard = ({ product, isInWishlist, setRemoveWishlist }) => {
+  const { title, brand, price, stock, category, description, imageUrl } =
     product;
 
   const userData = useUserData();
@@ -12,10 +12,13 @@ const ProductCard = ({ product, isInWishlist ,setRemoveWishlist }) => {
 
   const handleWishlist = async () => {
     try {
-      const res = await axios.patch("http://localhost:4000/wishlist/add", {
-        userEmail: userEmail,
-        productId: product._id,
-      });
+      const res = await axios.patch(
+        "https://nest-shop-server-six.vercel.app/wishlist/add",
+        {
+          userEmail: userEmail,
+          productId: product._id,
+        }
+      );
       // console.log(res.data);
       if (res.data.modifiedCount) {
         Swal.fire({
@@ -25,7 +28,6 @@ const ProductCard = ({ product, isInWishlist ,setRemoveWishlist }) => {
           showConfirmButton: false,
           timer: 1500,
         });
-        
       }
     } catch (err) {
       console.log(err);
@@ -34,10 +36,13 @@ const ProductCard = ({ product, isInWishlist ,setRemoveWishlist }) => {
 
   const handleRemoveFormWishlist = async () => {
     try {
-      const res = await axios.patch("http://localhost:4000/wishlist/remove", {
-        userEmail: userEmail,
-        productId: product._id,
-      });
+      const res = await axios.patch(
+        "https://nest-shop-server-six.vercel.app/wishlist/remove",
+        {
+          userEmail: userEmail,
+          productId: product._id,
+        }
+      );
       // console.log(res.data);
       if (res.data.modifiedCount) {
         Swal.fire({
@@ -47,7 +52,7 @@ const ProductCard = ({ product, isInWishlist ,setRemoveWishlist }) => {
           showConfirmButton: false,
           timer: 1500,
         });
-        setRemoveWishlist((del)=>!del)
+        setRemoveWishlist((del) => !del);
       }
     } catch (err) {
       console.log(err);
