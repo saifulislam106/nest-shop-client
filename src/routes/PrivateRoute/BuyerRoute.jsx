@@ -1,7 +1,7 @@
 import { Navigate, useLocation } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import useUserData from "../../Hooks/useUserData";
-import Loading from "../../Pages/loading";
+import Loading from "../../Pages/Loading";
 
 
 const BuyerRoute = ({children}) => {

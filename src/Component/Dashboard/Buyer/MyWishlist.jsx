@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import useUserData from "../../../Hooks/useUserData";
 import axios from "axios";
-import Loading from "../../../Pages/loading";
+import Loading from "../../../Pages/Loading";
 import ProductCard from "../../ProductCard";
 
 const MyWishlist = () => {
