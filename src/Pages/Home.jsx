@@ -4,6 +4,7 @@ import ContactInfo from "../Component/Home/ContactInfo";
 import Features from "../Component/Home/Features";
 import ProductCards from "../Component/Home/ProductCards";
 import Testimonials from "../Component/Home/Testimonials";
+import Faqs from "./Faqs";
 
 
 const Home = () => {
@@ -13,7 +14,7 @@ const Home = () => {
             <Features></Features>
             <ProductCards></ProductCards>
             <Testimonials></Testimonials>
-            <Categories></Categories>
+            <Faqs></Faqs>
             <ContactInfo></ContactInfo>
         </div>
     );

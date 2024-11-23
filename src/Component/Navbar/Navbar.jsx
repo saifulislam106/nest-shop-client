@@ -1,9 +1,10 @@
 import { Link, NavLink } from "react-router-dom";
-import Login from "../../Pages/Login";
-import Register from "../../Pages/Register";
+import useAuth from "../../Hooks/useAuth";
+import UserDropdown from "./UserDropdown";
 
 const Navbar = () => {
-    
+  const { user } = useAuth();
+  // console.log(user);
   return (
     <div className="navbar bg-base-100 container mx-auto">
       <div className="navbar-start">
@@ -42,7 +43,9 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <h2 className="font-bold text-3xl">NestShop</h2>
+        <h2 className="font-bold text-3xl">
+          Nest<span className="text-green-500">S</span>hop
+        </h2>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
@@ -60,7 +63,22 @@ const Navbar = () => {
           </li>
         </ul>
       </div>
-     
+      {user ? (
+        <div className="navbar-end">
+          <UserDropdown></UserDropdown>
+        </div>
+      ) : (
+        <div className="navbar-end">
+          <div className="flex gap-2">
+            <Link to="/login">
+              <button className="btn bg-green-900 rounded-full text-white">Login</button>
+            </Link>
+            <Link to="/register">
+              <button className="btn bg-green-950 rounded-full text-white">Register</button>
+            </Link>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
