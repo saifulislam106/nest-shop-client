@@ -1,5 +1,6 @@
 # React + Vite
-## Live linK : https://nest-shop-client.vercel.app/
+## Client linK : https://nest-shop-client.vercel.app/
+## Server linK :https://nest-shop-server-six.vercel.app/
 - Email: buyer@gmail.com || Password:#Buyer123
 - Email: seller@gmail.com || Password:#Seller123
 - Email: admin@gmail.com || Password:#Admin123
