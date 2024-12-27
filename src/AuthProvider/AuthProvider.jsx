@@ -57,6 +57,7 @@ const AuthProvider = ({ children }) => {
           .post("https://nest-shop-server-six.vercel.app/authentication", {
             email: currentUser.email,
           })
+          
           .then((data) => {
             if (data.data) {
               localStorage.setItem("access-token", data?.data?.token);
