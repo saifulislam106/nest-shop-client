@@ -1,24 +1,44 @@
-
+import { Link } from "react-router-dom";
 
 const Banner = () => {
-    return (
-        <div
-            className="hero min-h-screen"
-            style={{
-                backgroundImage: "url(https://img.freepik.com/free-photo/modern-stationary-collection-arrangement_23-2149309643.jpg?t=st=1731563767~exp=1731567367~hmac=cef8eae0bd56b0bdd5a6de6bc4226bae79c46f07ac0e8bd20c128b4c5055603f&w=996)",
-            }}>
-            <div className="hero-overlay bg-opacity-60"></div>
-            <div className="hero-content text-neutral-content text-center">
-                <div className="max-w-md">
-                    <h1 className="mb-5 text-5xl font-bold">Welcome Our NestShop</h1>
-                    <p className="mb-5">
-                    Your one-stop online destination for gadgets. seamless shopping with fast delivery, secure checkout, and exceptional customer support.
-                    </p>
-                    <button className="btn bg-green-500">Get Started</button>
-                </div>
-            </div>
+  return (
+    <section className="bg-gradient-to-r from-green-900 via-black to-green-950 text-white">
+      <div className="container mx-auto px-4 py-20 flex flex-col-reverse lg:flex-row items-center justify-between gap-10">
+        {/* Left - Text Content */}
+        <div className="flex-1 space-y-6 text-center lg:text-left">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+            Discover the Best Deals <br />
+            at <span className="text-green-400">NestShop</span>
+          </h1>
+          <p className="text-lg md:text-xl text-gray-300 max-w-lg mx-auto lg:mx-0">
+            Your one-stop marketplace for everyday essentials, exclusive offers,
+            and quality products.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+            <Link to="/products">
+              <button className="btn bg-green-600 hover:bg-green-700 text-white rounded-full px-6 py-2">
+                Shop Now
+              </button>
+            </Link>
+            <Link to="/about">
+              <button className="btn bg-transparent border border-white hover:bg-white hover:text-black rounded-full px-6 py-2">
+                Learn More
+              </button>
+            </Link>
+          </div>
         </div>
-    );
+
+        {/* Right - Optional Image */}
+        <div className="flex-1">
+          <img
+            src="/banner-illustration.png" // Place an optimized image in public/
+            alt="NestShop Banner"
+            className="w-full max-w-md mx-auto lg:mx-0"
+          />
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default Banner;
