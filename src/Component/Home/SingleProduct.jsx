@@ -6,7 +6,7 @@ const SingleProduct = ({ product }) => {
       {/* Product Image */}
       <div className="w-full h-56 overflow-hidden">
         <img
-          src="/public/images/gadget.jpg"
+          src="/images/gadget.jpg"
           alt={title}
           className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
         />

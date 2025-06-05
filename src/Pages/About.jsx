@@ -21,7 +21,7 @@ const About = () => {
         <div>
           <div className="rounded-lg overflow-hidden shadow-lg dark:shadow-none mb-6">
             <img
-              src="/public/images/happy-financial-consultant-greeting-his-clients-while-meeting-them-their-home-me-are-shaking-hands.jpg"
+              src="/images/happy-financial-consultant-greeting-his-clients-while-meeting-them-their-home-me-are-shaking-hands.jpg"
               alt="Consulting"
               className="w-full object-cover h-64 md:h-80"
             />
