@@ -3,81 +3,91 @@ import { MdEmail } from "react-icons/md";
 
 const Contact = () => {
   return (
-    <div className="mt-10">
-      <h1 className="text-3xl font-bold text-center mb-5">Contact Us</h1>
-      <p className="text-gray-500 text-center lg:w-1/2 mx-auto">
-        We'd love to hear from you! If you have any questions, feedback, or need
-        assistance, feel free to reach out. Our customer support team is here to
-        help.
-      </p>
-      <div className="mt-10 ">
-        <div className="lg:flex justify-around items-center ">
-        <div className=" space-y-8 ">
-            <div className="flex items-center gap-4">
-                <div className="bg-gray-200 p-4 rounded-full">
-                <FaHome />
-                </div>
-                <div>
-                    <h5 className="text-lg font-medium">Address</h5>
-                    <p>Rahman bhaban, 2th floor, Oxigen, chattagram</p>
-                </div>
+    <div className="bg-gray-900 text-white py-16 px-4">
+      <div className="max-w-6xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <h1 className="text-4xl font-bold mb-4">Contact Us</h1>
+          <p className="text-gray-400 max-w-2xl mx-auto">
+            We'd love to hear from you! Whether you have a question about features, pricing, or anything else,
+            our team is ready to answer all your questions.
+          </p>
+        </div>
+
+        {/* Content */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+          {/* Contact Info */}
+          <div className="space-y-8">
+            <div className="flex items-start gap-4">
+              <div className="bg-green-600 p-4 rounded-full text-white">
+                <FaHome size={20} />
+              </div>
+              <div>
+                <h5 className="text-xl font-semibold">Address</h5>
+                <p className="text-gray-400">Rahman Bhaban, 2nd Floor, Oxygen, Chattogram</p>
+              </div>
             </div>
-            <div className="flex items-center gap-4">
-                <div className="bg-gray-200 p-4 rounded-full">
-                <FaPhone />
-                </div>
-                <div>
-                    <h5 className="text-lg font-medium">Phone</h5>
-                    <p>01725400000</p>
-                </div>
+
+            <div className="flex items-start gap-4">
+              <div className="bg-green-600 p-4 rounded-full text-white">
+                <FaPhone size={20} />
+              </div>
+              <div>
+                <h5 className="text-xl font-semibold">Phone</h5>
+                <p className="text-gray-400">01725400000</p>
+              </div>
             </div>
-            <div className="flex items-center gap-4">
-                <div className="bg-gray-200 p-4 rounded-full">
-                <MdEmail />
-                </div>
-                <div>
-                    <h5 className="text-lg font-medium">Email</h5>
-                    <p>nestshop@gmail.com</p>
-                </div>
+
+            <div className="flex items-start gap-4">
+              <div className="bg-green-600 p-4 rounded-full text-white">
+                <MdEmail size={20} />
+              </div>
+              <div>
+                <h5 className="text-xl font-semibold">Email</h5>
+                <p className="text-gray-400">nestshop@gmail.com</p>
+              </div>
             </div>
           </div>
-          <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-            <h3 className="text-2xl font-bold px-8 pt-4">Send Message</h3>
-            <form className="card-body">
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Name</span>
-                </label>
+
+          {/* Contact Form */}
+          <div className="bg-gray-800 p-8 rounded-lg shadow-lg">
+            <h3 className="text-2xl font-bold mb-6">Send a Message</h3>
+            <form className="space-y-6">
+              <div>
+                <label className="block mb-1 text-sm">Name</label>
                 <input
                   type="text"
-                  className="input input-bordered"
+                  placeholder="Your Name"
+                  className="w-full px-4 py-2 bg-gray-700 text-white border border-gray-600 rounded-md focus:ring-2 focus:ring-green-500 outline-none"
                 />
               </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Email</span>
-                </label>
+
+              <div>
+                <label className="block mb-1 text-sm">Email</label>
                 <input
                   type="email"
-                  className="input input-bordered"
+                  placeholder="you@example.com"
+                  className="w-full px-4 py-2 bg-gray-700 text-white border border-gray-600 rounded-md focus:ring-2 focus:ring-green-500 outline-none"
                 />
               </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Phone</span>
-                </label>
+
+              <div>
+                <label className="block mb-1 text-sm">Phone</label>
                 <input
-                  type=""
-                  className="input input-bordered"
+                  type="tel"
+                  placeholder="Your Phone Number"
+                  className="w-full px-4 py-2 bg-gray-700 text-white border border-gray-600 rounded-md focus:ring-2 focus:ring-green-500 outline-none"
                 />
-                
               </div>
-              <div className="form-control mt-6">
-                <button className="btn bg-green-500 rounded-full">Submit Now</button>
-              </div>
+
+              <button
+                type="submit"
+                className="w-full py-3 bg-green-600 hover:bg-green-700 rounded-full text-white font-semibold transition"
+              >
+                Submit Now
+              </button>
             </form>
           </div>
-          
         </div>
       </div>
     </div>

@@ -9,7 +9,7 @@ const Root = () => {
             <div className="container mx-auto">
             <Navbar />
             </div>
-            <div className="container mx-auto min-h-screen h-full">
+            <div className="">
             <Outlet />
             </div>
             <div>
