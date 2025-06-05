@@ -44,7 +44,7 @@ const Banner = () => {
         <div className="flex-1 hidden lg:flex justify-center items-center">
           <div className="w-full max-w-md relative group">
             <img
-              src="../../../public/images/z2h4fcdz.jpg"
+              src="/public/images/z2h4fcdz.jpg"
               alt="Tech Gadget"
               className="w-full h-auto object-cover rounded-3xl shadow-2xl transition-transform duration-300 group-hover:scale-105 clip-path-style"
             />

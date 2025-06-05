@@ -61,7 +61,7 @@ const ProductCard = ({ product, isInWishlist, setRemoveWishlist }) => {
   return (
     <div className="bg-slate-200 p-4 shadow-md border-1 rounded-md flex flex-col flex-grow">
       <img
-        src="../../public/images/gadget.jpg"
+        src="/public/images/gadget.jpg"
         className="w-full object-cover"
         alt="Product img"
       />
