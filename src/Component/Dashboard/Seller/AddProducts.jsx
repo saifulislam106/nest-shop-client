@@ -33,11 +33,15 @@ const AddProducts = () => {
     const token = localStorage.getItem("access-token");
 
     axios
-      .post("https://nest-shop-server-six.vercel.app/add-products", product, {
-        headers: {
-          authorization: `Baerer ${token}`,
-        },
-      })
+      .post(
+        "https://nest-shop-server-5fq9.onrender.com/add-products",
+        product,
+        {
+          headers: {
+            authorization: `Baerer ${token}`,
+          },
+        }
+      )
       .then((res) => {
         if (res.data.insertedId) {
           Swal.fire({

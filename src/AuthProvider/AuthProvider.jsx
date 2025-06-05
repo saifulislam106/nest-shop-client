@@ -54,10 +54,10 @@ const AuthProvider = ({ children }) => {
       setUser(currentUser);
       if (currentUser) {
         axios
-          .post("https://nest-shop-server-six.vercel.app/authentication", {
+          .post("https://nest-shop-server-5fq9.onrender.com/authentication", {
             email: currentUser.email,
           })
-          
+
           .then((data) => {
             if (data.data) {
               localStorage.setItem("access-token", data?.data?.token);

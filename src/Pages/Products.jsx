@@ -19,27 +19,25 @@ const Products = () => {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
 
-  // console.log(search , sort);
-
   useEffect(() => {
-    setLoading(true);
-    const fetch = async () => {
+    const fetchProducts = async () => {
+      setLoading(true);
       try {
         const res = await axios.get(
-          `https://nest-shop-server-six.vercel.app/all-products?title=${search}&page=${page}&limit=${9}&sort=${sort}&brand=${brand}&category=${category}`
+          `https://nest-shop-server-5fq9.onrender.com/all-products?title=${search}&page=${page}&limit=9&sort=${sort}&brand=${brand}&category=${category}`
+          // `http://localhost:4000/all-products?title=${search}&page=${page}&limit=9&sort=${sort}&brand=${brand}&category=${category}`
         );
         setProducts(res.data.products);
-        // console.log(res.data.products);
         setUniqueBrand(res.data.brands);
         setUniqueCategory(res.data.categories);
         setTotalPages(Math.ceil(res.data.totalProducts / 9));
       } catch (err) {
-        console.error(err);
+        console.error("Failed to fetch products", err);
+      } finally {
+        setLoading(false);
       }
-      // console.log(totalProducts)
-      setLoading(false);
     };
-    fetch();
+    fetchProducts();
   }, [search, sort, brand, category, page]);
 
   const handleSearch = (e) => {
@@ -50,7 +48,7 @@ const Products = () => {
 
   const handleReset = () => {
     setSearch("");
-    setSort("asc");
+    setSort("");
     setBrand("");
     setCategory("");
     setPage(1);
@@ -64,15 +62,19 @@ const Products = () => {
   };
 
   return (
-    <div className="container mx-auto">
-      <h3 className="text-2xl font-bold text-center my-8">All Product</h3>
-      <div className="flex items-center justify-between">
-        {/* searching  */}
+    <section className="max-w-7xl mx-auto px-4 py-12">
+      <h2 className="text-3xl font-bold text-center text-gray-800 dark:text-white mb-8">
+        All Products
+      </h2>
+
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
         <SearchBar handleSearch={handleSearch} />
         <SortByPrice setSort={setSort} />
       </div>
-      <div className="grid grid-cols-12 gap-3 my-6 ">
-        <div className="col-span-2">
+
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+        {/* Sidebar Filters */}
+        <aside className="md:col-span-3">
           <FilterBar
             setBrand={setBrand}
             setCategory={setCategory}
@@ -80,50 +82,51 @@ const Products = () => {
             uniqueCategory={uniqueCategory}
             handleReset={handleReset}
           />
-        </div>
+        </aside>
 
-        {/* Show product card  */}
-        <div className="col-span-10">
+        {/* Product Grid */}
+        <main className="md:col-span-9">
           {loading ? (
             <Loading />
+          ) : products.length === 0 ? (
+            <div className="h-64 flex items-center justify-center">
+              <p className="text-xl font-semibold text-gray-600 dark:text-gray-300">
+                No products found.
+              </p>
+            </div>
           ) : (
-            <>
-              {products?.length === 0 ? (
-                <div className="w-full h-full flex items-center justify-center">
-                  <h3 className="text-2xl font-bold">No Products found</h3>
-                </div>
-              ) : (
-                <div className="min-h-screen grid grid-cols-3 gap-3">
-                  {products?.map((product) => (
-                    <ProductCard key={product._id} product={product} />
-                  ))}
-                </div>
-              )}
-            </>
+            <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+              {products.map((product) => (
+                <ProductCard key={product._id} product={product} />
+              ))}
+            </div>
           )}
-          {/* pagination  */}
-          <div className="my-8 flex items-center justify-center gap-2">
-            <button
-              onClick={() => handlePageChange(page - 1)}
-              disabled={page === 1}
-              className="btn"
-            >
-              <IoArrowBackCircle />
-            </button>
-            <p>
-              Page {page} of {totalPages}
-            </p>
-            <button
-              onClick={() => handlePageChange(page + 1)}
-              className="btn"
-              disabled={page === totalPages}
-            >
-              <IoArrowForwardCircle />{" "}
-            </button>
-          </div>
-        </div>
+
+          {/* Pagination */}
+          {totalPages > 1 && (
+            <div className="mt-10 flex items-center justify-center gap-4">
+              <button
+                onClick={() => handlePageChange(page - 1)}
+                disabled={page === 1}
+                className="text-2xl disabled:opacity-40 transition hover:scale-110"
+              >
+                <IoArrowBackCircle />
+              </button>
+              <span className="text-lg text-gray-700 dark:text-gray-300">
+                Page <strong>{page}</strong> of {totalPages}
+              </span>
+              <button
+                onClick={() => handlePageChange(page + 1)}
+                disabled={page === totalPages}
+                className="text-2xl disabled:opacity-40 transition hover:scale-110"
+              >
+                <IoArrowForwardCircle />
+              </button>
+            </div>
+          )}
+        </main>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -1,10 +1,13 @@
 # React + Vite
+
 ## Client linK : https://nest-shop-client.vercel.app/
-## Server linK :https://nest-shop-server-six.vercel.app/
+
+## Server linK :https://nest-shop-server-5fq9.onrender.com/
+
 - Email: buyer@gmail.com || Password:#Buyer123
 - Email: seller@gmail.com || Password:#Seller123
 - Email: admin@gmail.com || Password:#Admin123
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+  This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
 

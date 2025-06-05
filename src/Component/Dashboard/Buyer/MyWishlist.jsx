@@ -17,7 +17,7 @@ const MyWishlist = () => {
       setLoading(true);
       await axios
         .get(
-          `https://nest-shop-server-six.vercel.app/wishlist/${userData._id}`,
+          `https://nest-shop-server-5fq9.onrender.com/wishlist/${userData._id}`,
           {
             headers: {
               authorization: `Bearer ${token}`,

@@ -10,7 +10,7 @@ const useUserData = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       const res = await axios.get(
-        `https://nest-shop-server-six.vercel.app/user/${user.email}`
+        `https://nest-shop-server-5fq9.onrender.com/user/${user.email}`
       );
       setUserData(res.data);
       console.log(res);

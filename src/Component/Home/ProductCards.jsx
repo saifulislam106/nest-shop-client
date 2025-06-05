@@ -10,8 +10,8 @@ const ProductCards = () => {
     const fetchProducts = async () => {
       try {
         const res = await axios.get(
-          // "https://nest-shop-server-six.vercel.app/all-products"
-          "http://localhost:4000/all-products"
+          "https://nest-shop-server-5fq9.onrender.com/all-products"
+          // "http://localhost:4000/all-products"
         );
         setItems(res.data.products);
       } catch (err) {

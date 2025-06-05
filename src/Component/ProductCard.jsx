@@ -13,7 +13,7 @@ const ProductCard = ({ product, isInWishlist, setRemoveWishlist }) => {
   const handleWishlist = async () => {
     try {
       const res = await axios.patch(
-        "https://nest-shop-server-six.vercel.app/wishlist/add",
+        "https://nest-shop-server-5fq9.onrender.com/wishlist/add",
         {
           userEmail: userEmail,
           productId: product._id,
@@ -37,7 +37,7 @@ const ProductCard = ({ product, isInWishlist, setRemoveWishlist }) => {
   const handleRemoveFormWishlist = async () => {
     try {
       const res = await axios.patch(
-        "https://nest-shop-server-six.vercel.app/wishlist/remove",
+        "https://nest-shop-server-5fq9.onrender.com/wishlist/remove",
         {
           userEmail: userEmail,
           productId: product._id,
@@ -60,7 +60,11 @@ const ProductCard = ({ product, isInWishlist, setRemoveWishlist }) => {
   };
   return (
     <div className="bg-slate-200 p-4 shadow-md border-1 rounded-md flex flex-col flex-grow">
-      <img src={imageUrl} className="w-full object-cover" alt="Product img" />
+      <img
+        src="../../public/images/gadget.jpg"
+        className="w-full object-cover"
+        alt="Product img"
+      />
       <div className="card-body">
         <h2 className="card-title">{title}</h2>
         <p className="font-medium">Brand: {brand}</p>

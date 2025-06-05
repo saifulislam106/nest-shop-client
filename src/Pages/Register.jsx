@@ -26,7 +26,7 @@ const Register = () => {
     // Uncomment if you intend to register the user and send data to your server
     CreateUser(data.email, data.password).then(() => {
       axios
-        .post("https://nest-shop-server-six.vercel.app/users", userData)
+        .post("https://nest-shop-server-5fq9.onrender.com/users", userData)
         .then((res) => {
           if (res.data.insertedId) {
             Swal.fire({
